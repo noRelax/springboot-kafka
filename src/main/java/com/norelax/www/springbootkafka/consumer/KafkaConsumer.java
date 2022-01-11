@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  * @author wusong
  * @create 2022-01-10 22:03
  **/
-@Component
+//@Component
 @Slf4j
 public class KafkaConsumer {
 

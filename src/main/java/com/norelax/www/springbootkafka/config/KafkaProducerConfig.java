@@ -20,7 +20,7 @@ import java.util.Map;
  * @author wusong
  * @create 2022-01-10 21:22
  **/
-@Configuration
+//@Configuration
 public class KafkaProducerConfig {
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
