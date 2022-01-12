@@ -2,6 +2,7 @@ package com.norelax.www.springbootkafka.entity;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
 
 /**
  * @author wusong
