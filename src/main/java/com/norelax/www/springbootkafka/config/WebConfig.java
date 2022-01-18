@@ -3,9 +3,11 @@ package com.norelax.www.springbootkafka.config;
 import com.norelax.www.springbootkafka.entity.Book;
 import com.norelax.www.springbootkafka.entity.Fish;
 import com.norelax.www.springbootkafka.entity.MyBeanPostProcessor;
+import com.norelax.www.springbootkafka.entity.School;
 import com.norelax.www.springbootkafka.entity.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 
 /**
  * @author wusong
@@ -24,6 +26,7 @@ public class WebConfig {
     }
 
     @Bean
+    @DependsOn("school")
     public Fish fish() {
         return new Fish();
     }
@@ -31,6 +34,11 @@ public class WebConfig {
     @Bean
     public MyBeanPostProcessor myBeanPostProcessor() {
         return new MyBeanPostProcessor();
+    }
+
+    @Bean
+    public School school() {
+        return new School();
     }
 
 }
