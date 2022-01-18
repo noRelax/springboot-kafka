@@ -5,15 +5,19 @@ import com.norelax.www.springbootkafka.entity.Fish;
 import com.norelax.www.springbootkafka.entity.MyBeanPostProcessor;
 import com.norelax.www.springbootkafka.entity.School;
 import com.norelax.www.springbootkafka.entity.User;
+import com.norelax.www.springbootkafka.entity.UserThreadFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.PropertySource;
 
 /**
  * @author wusong
  * @date 2022年01月11日 18:30
  */
 @Configuration
+@PropertySource(value = "classpath:application.yml")
 public class WebConfig {
     @Bean
     public Book book() {
@@ -39,6 +43,11 @@ public class WebConfig {
     @Bean
     public School school() {
         return new School();
+    }
+
+    @Bean
+    public UserThreadFactory userThreadFactory(@Value("${thread.group-id}") String whatFeaturOfGroup) {
+        return new UserThreadFactory(whatFeaturOfGroup);
     }
 
 }

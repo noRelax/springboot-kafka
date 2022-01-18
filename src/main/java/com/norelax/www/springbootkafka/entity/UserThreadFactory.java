@@ -14,8 +14,8 @@ public class UserThreadFactory implements ThreadFactory {
     private final AtomicInteger nextId = new AtomicInteger(1);
 
     // 定义线程组名称，在 jstack 问题排查时，非常有帮助
-    UserThreadFactory(String whatFeaturOfGroup) {
-        namePrefix = "From UserThreadFactory's " + whatFeaturOfGroup + "-Worker-";
+    public UserThreadFactory(String whatFeaturOfGroup) {
+        namePrefix = whatFeaturOfGroup + "-Worker-";
     }
 
     @Override
@@ -28,7 +28,6 @@ public class UserThreadFactory implements ThreadFactory {
 
     public static void main(String[] args) {
         UserThreadFactory userThreadFactory = new UserThreadFactory("1");
-        //userThreadFactory.newThread(() -> System.out.println(">>>>>>>>"+Thread.currentThread().getName())).start();
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(8, 20, 300, TimeUnit.SECONDS, new LinkedBlockingQueue<>(10000), userThreadFactory);
         threadPoolExecutor.execute(() -> {
             log.info("线程池日志打印。。。");

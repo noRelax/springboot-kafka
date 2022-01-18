@@ -8,3 +8,6 @@ spring:
       #exception:直接抛出异常
       auto-offset-reset: latest
       group-id: test-consumer
+
+thread:
+  group-id: 10.100.119.137
